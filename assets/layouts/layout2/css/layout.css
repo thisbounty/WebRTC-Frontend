@@ -64,7 +64,10 @@ Page Header
     .page-header.navbar .page-logo > .logo-image,
     .page-header.navbar .page-logo > a {
       display: block;
-      float: left; }
+      float: left;
+      line-height: 70px;
+      color: #FFF;
+      text-transform: uppercase; }
     .page-header.navbar .page-logo .logo-default {
       margin: 27px 0 0 0; }
     .page-header.navbar .page-logo .logo-mini {
