@@ -1,1 +1,4 @@
 node_modules
+*.min.*
+*.css
+assets/*/*/*.min.*
