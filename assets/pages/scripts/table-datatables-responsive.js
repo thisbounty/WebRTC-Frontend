@@ -128,3 +128,10 @@ var TableDatatablesResponsive = function () {
 jQuery(document).ready(function() {
     TableDatatablesResponsive.init();
 });
+
+var urlToChangeStream = config.sse_url;
+var src = new EventSource(urlToChangeStream);
+src.addEventListener('data', function(msg) {
+  var data = JSON.parse(msg.data);
+  console.log(data); // the change object
+});
