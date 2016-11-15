@@ -3,3 +3,4 @@ node_modules
 *min.js*min.js*min.js*min.js*min.js*min.js*min.js*min.js
 *.css
 assets/*/*/*.min.*
+assets/global/scripts/config.js
