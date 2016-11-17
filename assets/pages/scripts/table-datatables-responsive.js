@@ -46,7 +46,17 @@ var TableDatatablesResponsive = function () {
             "pageLength": 10,
 
             "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
-
+            "ajax":{
+                'url':config.calls_get_all_url,
+                'dataSrc': function ( calls ) {
+                    table=[];
+                    for ( var i=0, ien=calls.length ; i<ien ; i++ ) {
+                        call=calls[i];
+                        table.push([call.caller, call.status, call.token]);
+                    }
+                    return table;
+                }
+            },
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
             // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
             // So when dropdowns used the scrollable div should be removed.
