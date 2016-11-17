@@ -52,7 +52,11 @@ var TableDatatablesResponsive = function () {
                     table=[];
                     for ( var i=0, ien=json.calls.length ; i<ien ; i++ ) {
                         call=json.calls[i];
-                        table.push([call.created, call.caller, call.status]);
+                        if(call.status == 'Incoming') {
+                            table.push([call.created, call.caller, '<button name="connect" data-token="'+call.token+'">'+call.status+"</button>"]);
+                        } else {
+                            table.push([call.created, call.caller, call.status]);
+                        }
                     }
                     return table;
                 }
