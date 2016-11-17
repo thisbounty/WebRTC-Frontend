@@ -48,11 +48,11 @@ var TableDatatablesResponsive = function () {
             "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
             "ajax":{
                 'url':config.calls_get_all_url,
-                'dataSrc': function ( calls ) {
+                'dataSrc': function ( json ) {
                     table=[];
-                    for ( var i=0, ien=calls.length ; i<ien ; i++ ) {
-                        call=calls[i];
-                        table.push([call.caller, call.status, call.token]);
+                    for ( var i=0, ien=json.calls.length ; i<ien ; i++ ) {
+                        call=json.calls[i];
+                        table.push([call.created, call.caller, call.status]);
                     }
                     return table;
                 }
