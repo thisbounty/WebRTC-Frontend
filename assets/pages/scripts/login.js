@@ -46,6 +46,11 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
+                $.post(config.login_url, $('form.login-form').serialize(), function(data) {
+                    if(data.id) {
+                        localStorage.setItem('call2text',data.id);
+                    }
+                });
                 return false;
             }
         });
@@ -58,7 +63,7 @@ var Login = function() {
                 return false;
             }
         });
-    }
+    };
 
     var handleForgetPassword = function() {
         $('.forget-form').validate({
