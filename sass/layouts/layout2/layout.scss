@@ -31,4 +31,58 @@ Page Loading
 		display: none;
 		transition: all 2s;
 	}
-}
+}}
+
+@media all and (max-width:768px) {
+     body > .page-header, body > .clearfix, body > .page-container, body > .page-footer {
+         display:none;
+     }
+ }
+
+ @media all and (min-width:768px) {
+     body > .mobile {
+          display:none;
+     }
+ }
+
+
+ .mobile .logo {
+   margin: 0 auto;
+   margin-top: 100px;
+   padding: 15px;
+   text-align: center;
+ }
+
+ .mobile .content {
+   width: 400px;
+   margin: 40px auto 40px auto;
+ }
+ .mobile .content .form-actions .btn {
+   margin-top: 1px;
+ }
+ .mobile .btn {
+   background-color: #5995bb;
+   border: 1px solid #72a9cc;
+   color: #8fc4e5;
+   font-weight: 600;
+   padding: 10px 25px !important;
+
+   &:hover {
+     border: 1px solid lighten(#72a9cc, 8%);
+     background-color: #5995bb;
+     color: #8fc4e5;
+   }
+ }
+ .mobile .btn-default {
+   background-color: #5995bb;
+   border: 1px solid #72a9cc;
+   color: #8fc4e5;
+   font-weight: 600;
+   padding: 10px 25px !important;
+
+   &:hover {
+     border: 1px solid lighten(#72a9cc, 8%);
+     background-color: #5995bb;
+     color: #8fc4e5;
+   }
+ }
