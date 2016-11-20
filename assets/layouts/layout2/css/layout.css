@@ -2158,3 +2158,11 @@ Page Loading
   .page-on-load > .clearfix {
     display: none;
     transition: all 2s; }
+
+@media all and (max-width: 768px) {
+  body > .page-header, body > .clearfix, body > .page-container, body > .page-footer {
+    display: none; } }
+
+@media all and (min-width: 768px) {
+  body > .mobile {
+    display: none; } }
