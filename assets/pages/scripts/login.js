@@ -48,7 +48,7 @@ var Login = function() {
             submitHandler: function(form) {
                 $.post(config.login_url, $('form.login-form').serialize(), function(data) {
                     if(data.id) {
-                        localStorage.setItem('call2text',data.id);
+                        localStorage.setItem('call2search',data.id);
                         window.location = config.dashboard_url;
                     }
                 });
