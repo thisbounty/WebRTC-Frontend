@@ -9,5 +9,12 @@ jQuery(document).ready(function(){
 }); //doc ready
 
 function call2text_opentok_connect($api, $session_id, $token, cb) {
-    cb(false);
+    var session = OT.initSession($api, $session_id);
+    session.connect($token, function(error) {
+      if (error) {
+        console.log("Error connecting: ", error.code, error.message);
+      } else {
+          cb(session);
+      }
+    });
 }
