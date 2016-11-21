@@ -2168,10 +2168,11 @@ Page Loading
     display: none; } }
 
 .mobile .logo {
-  margin: 0 auto;
-  margin-top: 100px;
-  padding: 15px;
+  margin: 30px auto 0 auto;
   text-align: center; }
+
+.mobile .logo a {
+  color: #FFF; }
 
 .mobile .content .form-actions .btn {
   width: 200px;
