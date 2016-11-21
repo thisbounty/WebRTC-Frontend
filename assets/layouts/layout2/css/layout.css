@@ -2174,7 +2174,8 @@ Page Loading
   text-align: center; }
 
 .mobile .content .form-actions .btn {
-  margin-top: 1px; }
+  width: 200px;
+  margin: 70px auto 0; }
 
 .mobile .btn {
   background-color: #5995bb;
