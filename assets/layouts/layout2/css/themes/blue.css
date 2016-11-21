@@ -72,34 +72,34 @@
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > .langname {
       color: #7f96ac; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu {
-      background: #374b6d;
+      background: #80aecc;
       border: 0; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu:after {
-        border-bottom-color: #374b6d; }
+        border-bottom-color: #80aecc; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu > li.external {
-        background: #293952; }
+        background: #639cc0; }
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu > li.external > h3 {
-          color: #a8b8d3; }
+          color: white; }
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu > li.external > a:hover {
           color: #5496cf; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu.dropdown-menu-default > li a,
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu .dropdown-menu-list > li a {
-        color: #b8c6db;
-        border-bottom: 1px solid #415a81 !important; }
+        color: white;
+        border-bottom: 1px solid #96bcd5 !important; }
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu.dropdown-menu-default > li a > i,
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu .dropdown-menu-list > li a > i {
-          color: #97aaca; }
+          color: white; }
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu.dropdown-menu-default > li a:hover,
         .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu .dropdown-menu-list > li a:hover {
-          background: #3e557a; }
+          background: #8fb7d2; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu.dropdown-menu-default > li a {
         border-bottom: 0 !important; }
       .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu.dropdown-menu-default > li.divider {
-        background: #415a81; }
+        background: #96bcd5; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification.dropdown-dark .dropdown-menu .dropdown-menu-list > li > a .time {
-      background: #2f405c; }
+      background: #6ea3c4; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification.dropdown-dark .dropdown-menu .dropdown-menu-list > li > a:hover .time {
-      background: #26344b; }
+      background: #5c97bd; }
   .page-header.navbar .search-form {
     background: #fff; }
     .page-header.navbar .search-form .input-group .form-control {
@@ -117,7 +117,7 @@
 /* Page sidebar */
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover,
 .page-sidebar {
-  background-color: #26344B;
+  background-color: #5c97bd;
   /* Default sidebar */ }
   .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu,
   .page-sidebar .page-sidebar-menu {
@@ -125,13 +125,13 @@
     /* All links */ }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a,
     .page-sidebar .page-sidebar-menu > li > a {
-      border-top: 1px solid #2b3b55;
-      color: #c3cee0; }
+      border-top: 1px solid #679ec1;
+      color: white; }
       @media (max-width: 991px) {
         .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a,
         .page-sidebar .page-sidebar-menu > li > a {
           /* 991px */
-          border-top: 1px solid #344766; } }
+          border-top: 1px solid #79aac9; } }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i,
       .page-sidebar .page-sidebar-menu > li > a > i {
         color: #43516c; }
@@ -143,12 +143,12 @@
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .arrow.open:before,
       .page-sidebar .page-sidebar-menu > li > a > .arrow:before,
       .page-sidebar .page-sidebar-menu > li > a > .arrow.open:before {
-        color: #3b5074; }
+        color: #88b3cf; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a,
     .page-sidebar .page-sidebar-menu > li:hover > a,
     .page-sidebar .page-sidebar-menu > li.open > a {
-      background: #212d41;
-      color: #e4e9f2; }
+      background: #5190b9;
+      color: white; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a > i,
       .page-sidebar .page-sidebar-menu > li:hover > a > i,
       .page-sidebar .page-sidebar-menu > li.open > a > i {
@@ -162,12 +162,12 @@
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a,
     .page-sidebar .page-sidebar-menu > li.active > a,
     .page-sidebar .page-sidebar-menu > li.active.open > a {
-      background: #1f2b3d;
+      background: #4d8eb7;
       color: white; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover,
       .page-sidebar .page-sidebar-menu > li.active > a:hover,
       .page-sidebar .page-sidebar-menu > li.active.open > a:hover {
-        background: #232f44; }
+        background: #5592ba; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a > i,
       .page-sidebar .page-sidebar-menu > li.active > a > i,
       .page-sidebar .page-sidebar-menu > li.active.open > a > i {
@@ -177,14 +177,14 @@
       .page-sidebar .page-sidebar-menu > li.active > a > .arrow.open:before,
       .page-sidebar .page-sidebar-menu > li.active.open > a > .arrow:before,
       .page-sidebar .page-sidebar-menu > li.active.open > a > .arrow.open:before {
-        color: whitesmoke; }
+        color: #ffebeb; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:last-child > a,
     .page-sidebar .page-sidebar-menu > li:last-child > a {
       border-bottom: 1px solid transparent !important; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open:before,
     .page-sidebar .page-sidebar-menu li > a > .arrow:before,
     .page-sidebar .page-sidebar-menu li > a > .arrow.open:before {
-      color: #3b5074; }
+      color: #88b3cf; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li:hover > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li:hover > a > .arrow.open:before,
     .page-sidebar .page-sidebar-menu li:hover > a > .arrow:before,
     .page-sidebar .page-sidebar-menu li:hover > a > .arrow.open:before {
@@ -192,36 +192,36 @@
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li.active > a > .arrow.open:before,
     .page-sidebar .page-sidebar-menu li.active > a > .arrow:before,
     .page-sidebar .page-sidebar-menu li.active > a > .arrow.open:before {
-      color: whitesmoke; }
+      color: #ffebeb; }
     .page-sidebar-closed .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu:hover .sub-menu, .page-sidebar-closed
     .page-sidebar .page-sidebar-menu:hover .sub-menu {
-      background: #1c2637; }
+      background: #4889b2; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a,
     .page-sidebar .page-sidebar-menu .sub-menu > li > a {
-      color: #b2c0d8; }
+      color: white; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a > i,
       .page-sidebar .page-sidebar-menu .sub-menu > li > a > i {
-        color: #516fa0; }
+        color: #ff6666; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a > i[class^="icon-"],
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a > i[class*="icon-"],
       .page-sidebar .page-sidebar-menu .sub-menu > li > a > i[class^="icon-"],
       .page-sidebar .page-sidebar-menu .sub-menu > li > a > i[class*="icon-"] {
-        color: #5d7bad; }
+        color: #ff8080; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li > a > .arrow.open:before,
       .page-sidebar .page-sidebar-menu .sub-menu > li > a > .arrow:before,
       .page-sidebar .page-sidebar-menu .sub-menu > li > a > .arrow.open:before {
-        color: #3b5074; }
+        color: #88b3cf; }
     .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a,
     .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a,
     .page-sidebar .page-sidebar-menu .sub-menu > li.open > a,
     .page-sidebar .page-sidebar-menu .sub-menu > li.active > a {
-      background: #212d41 !important; }
+      background: #5190b9 !important; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a > i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a > i,
       .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a > i,
       .page-sidebar .page-sidebar-menu .sub-menu > li.open > a > i,
       .page-sidebar .page-sidebar-menu .sub-menu > li.active > a > i {
         color: #4d5d7c;
-        color: #90a5c7; }
+        color: #ffcccc; }
       .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a > .arrow.open:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a > .arrow.open:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a > .arrow:before, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a > .arrow.open:before,
       .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a > .arrow:before,
       .page-sidebar .page-sidebar-menu .sub-menu > li:hover > a > .arrow.open:before,
@@ -235,7 +235,7 @@
     Page Footer 
     ******/
 .page-footer .page-footer-inner {
-  color: #a1b2cf; }
+  color: #ffcccc; }
 
 .page-footer-fixed .page-footer {
   background-color: #a5aea8; }
@@ -269,7 +269,7 @@
     background-color: #b8bfba !important;
     /* Page container */ }
     .page-boxed .page-container {
-      background-color: #26344B; }
+      background-color: #5c97bd; }
     .page-boxed.page-sidebar-reversed .page-container {
       border-left: 0; }
     .page-boxed.page-sidebar-fixed .page-container {
@@ -281,11 +281,11 @@
       border-bottom: 0; }
   /* Sidebar Menu Wirh Hoverable Submenu */
   .page-sidebar-menu-hover-submenu li:hover a > .arrow {
-    border-right: 8px solid #1c2637; }
+    border-right: 8px solid #4889b2; }
     .page-sidebar-reversed .page-sidebar-menu-hover-submenu li:hover a > .arrow {
-      border-left: 8px solid #1c2637; }
+      border-left: 8px solid #4889b2; }
   .page-sidebar-menu-hover-submenu li:hover > .sub-menu {
-    background: #1c2637 !important; } }
+    background: #4889b2 !important; } }
 
 @media (max-width: 991px) {
   /* 991px */
@@ -319,7 +319,7 @@
     Boby
     ****/
 body {
-  background-color: #26344B; }
+  background-color: #5c97bd; }
 
 body.page-boxed {
   background-color: #C0C6C2; }
