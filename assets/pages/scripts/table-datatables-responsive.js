@@ -139,7 +139,7 @@ var TableDatatablesResponsive = function () {
 
 }();
 
-jQuery(document).ready(function() {
+$(window).load(function() {
     TableDatatablesResponsive.init();
 });
 
