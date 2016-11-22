@@ -1008,6 +1008,10 @@ var App = function() {
             };
 
             return sizes[size] ? sizes[size] : 0;
+        },
+
+        api_url: function ($url) {
+             return $url+"?access_token="+localStorage.getItem('call2text');
         }
     };
 
