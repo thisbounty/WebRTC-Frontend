@@ -73,7 +73,7 @@ var App = function() {
                 }
                 resize = setTimeout(function() {
                     _runResizeHandlers();
-                }, 50); // wait 50ms until window resize finishes.                
+                }, 50); // wait 50ms until window resize finishes.
                 currheight = document.documentElement.clientHeight; // store last body client height
             });
         } else {
@@ -198,7 +198,7 @@ var App = function() {
             }
         });
     };
-    
+
     // Handlesmaterial design checkboxes
     var handleMaterialDesign = function() {
 
@@ -207,46 +207,46 @@ var App = function() {
             var the = $(this);
             // find the first span which is our circle/bubble
             var el = $(this).children('span:first-child');
-              
+
             // add the bubble class (we do this so it doesnt show on page load)
             el.addClass('inc');
-              
+
             // clone it
-            var newone = el.clone(true);  
-              
+            var newone = el.clone(true);
+
             // add the cloned version before our original
-            el.before(newone);  
-              
+            el.before(newone);
+
             // remove the original so that it is ready to run on next click
             $("." + el.attr("class") + ":last", the).remove();
-        }); 
+        });
 
-        if ($('body').hasClass('page-md')) { 
+        if ($('body').hasClass('page-md')) {
             // Material design click effect
-            // credit where credit's due; http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design       
+            // credit where credit's due; http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design
             var element, circle, d, x, y;
-            $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function(e) { 
+            $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function(e) {
                 element = $(this);
-      
+
                 if(element.find(".md-click-circle").length == 0) {
                     element.prepend("<span class='md-click-circle'></span>");
                 }
-                    
+
                 circle = element.find(".md-click-circle");
                 circle.removeClass("md-click-animate");
-                
+
                 if(!circle.height() && !circle.width()) {
                     d = Math.max(element.outerWidth(), element.outerHeight());
                     circle.css({height: d, width: d});
                 }
-                
+
                 x = e.pageX - element.offset().left - circle.width()/2;
                 y = e.pageY - element.offset().top - circle.height()/2;
-                
+
                 circle.css({top: y+'px', left: x+'px'}).addClass("md-click-animate");
 
                 setTimeout(function() {
-                    circle.remove();      
+                    circle.remove();
                 }, 1000);
             });
         }
@@ -258,14 +258,14 @@ var App = function() {
             } else {
                 el.removeClass('edited');
             }
-        } 
+        }
 
-        $('body').on('keydown', '.form-md-floating-label .form-control', function(e) { 
+        $('body').on('keydown', '.form-md-floating-label .form-control', function(e) {
             handleInput($(this));
         });
-        $('body').on('blur', '.form-md-floating-label .form-control', function(e) { 
+        $('body').on('blur', '.form-md-floating-label .form-control', function(e) {
             handleInput($(this));
-        });        
+        });
 
         $('.form-md-floating-label .form-control').each(function(){
             if ($(this).val().length > 0) {
@@ -314,7 +314,7 @@ var App = function() {
         }
         $('[data-toggle=confirmation]').confirmation({ btnOkClass: 'btn btn-sm btn-success', btnCancelClass: 'btn btn-sm btn-danger'});
     }
-    
+
     // Handles Bootstrap Accordions.
     var handleAccordions = function() {
         $('body').on('shown.bs.collapse', '.accordion.scrollable', function(e) {
@@ -342,8 +342,8 @@ var App = function() {
     };
 
     // Handles Bootstrap Modals.
-    var handleModals = function() {        
-        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
+    var handleModals = function() {
+        // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class.
         $('body').on('hide.bs.modal', function() {
             if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') === false) {
                 $('html').addClass('modal-open');
@@ -364,7 +364,7 @@ var App = function() {
             $('body').removeClass("modal-open-noscroll");
         });
 
-        // remove ajax content and remove cache on modal closed 
+        // remove ajax content and remove cache on modal closed
         $('body').on('hidden.bs.modal', '.modal:not(.modal-cached)', function () {
             $(this).removeData('bs.modal');
         });
@@ -406,7 +406,7 @@ var App = function() {
     // Handles Bootstrap Dropdowns
     var handleDropdowns = function() {
         /*
-          Hold dropdown on click  
+          Hold dropdown on click
         */
         $('body').on('click', '.dropdown-menu.hold-on-click', function(e) {
             e.stopPropagation();
@@ -431,7 +431,7 @@ var App = function() {
         });
     };
 
-    // Handle textarea autosize 
+    // Handle textarea autosize
     var handleTextareaAutosize = function() {
         if (typeof(autosize) == "function") {
             autosize(document.querySelectorAll('textarea.autosizeme'));
@@ -526,7 +526,7 @@ var App = function() {
             $.fn.select2.defaults.set("theme", "bootstrap");
             $('.select2me').select2({
                 placeholder: "Select",
-                width: 'auto', 
+                width: 'auto',
                 allowClear: true
             });
         }
@@ -567,9 +567,9 @@ var App = function() {
             if(parent.attr('data-related')) {
                 $(parent.attr('data-related')).css('height', parent.height());
             }
-       });       
+       });
     }
-    
+
     //* END:CORE HANDLERS *//
 
     return {
@@ -580,13 +580,13 @@ var App = function() {
 
             //Core handlers
             handleInit(); // initialize core variables
-            handleOnResize(); // set and handle responsive    
+            handleOnResize(); // set and handle responsive
 
-            //UI Component handlers     
-            handleMaterialDesign(); // handle material design       
+            //UI Component handlers
+            handleMaterialDesign(); // handle material design
             handleiCheck(); // handles custom icheck radio and checkboxes
             handleBootstrapSwitch(); // handle bootstrap switch plugin
-            handleScrollers(); // handles slim scrolling contents 
+            handleScrollers(); // handles slim scrolling contents
             handleFancybox(); // handle fancy box
             handleSelect2(); // handle custom Select2 dropdowns
             handlePortletTools(); // handles portlet action bar functionality(refresh, configure, toggle, remove)
@@ -595,7 +595,7 @@ var App = function() {
             handleTabs(); // handle tabs
             handleTooltips(); // handle bootstrap tooltips
             handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions 
+            handleAccordions(); //handles accordions
             handleModals(); // handle modals
             handleBootstrapConfirmation(); // handle bootstrap confirmations
             handleTextareaAutosize(); // handle autosize textareas
@@ -610,20 +610,20 @@ var App = function() {
 
         //main function to initiate core javascript after ajax complete
         initAjax: function() {
-            //handleUniform(); // handles custom radio & checkboxes     
+            //handleUniform(); // handles custom radio & checkboxes
             handleiCheck(); // handles custom icheck radio and checkboxes
             handleBootstrapSwitch(); // handle bootstrap switch plugin
-            handleScrollers(); // handles slim scrolling contents 
+            handleScrollers(); // handles slim scrolling contents
             handleSelect2(); // handle custom Select2 dropdowns
             handleFancybox(); // handle fancy box
             handleDropdowns(); // handle dropdowns
             handleTooltips(); // handle bootstrap tooltips
             handlePopovers(); // handles bootstrap popovers
-            handleAccordions(); //handles accordions 
+            handleAccordions(); //handles accordions
             handleBootstrapConfirmation(); // handle bootstrap confirmations
         },
 
-        //init main components 
+        //init main components
         initComponents: function() {
             this.initAjax();
         },
@@ -833,7 +833,7 @@ var App = function() {
 
             options = $.extend(true, {
                 container: "", // alerts parent container(by default placed after the page breadcrumbs)
-                place: "append", // "append" or "prepend" in container 
+                place: "append", // "append" or "prepend" in container
                 type: 'success', // alert's type
                 message: "", // alert's message
                 close: true, // make alert closable
@@ -1007,7 +1007,7 @@ var App = function() {
                 'lg' : 1200     // large
             };
 
-            return sizes[size] ? sizes[size] : 0; 
+            return sizes[size] ? sizes[size] : 0;
         }
     };
 
@@ -1015,6 +1015,6 @@ var App = function() {
 
 <!-- END THEME LAYOUT SCRIPTS -->
 
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
    App.init(); // init metronic core componets
 });
