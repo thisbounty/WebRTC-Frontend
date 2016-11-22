@@ -3,7 +3,8 @@ jQuery(document).ready(function(){
         if (OT.checkSystemRequirements() == 1) {
             call2text_opentok_connect(config.tokbox_api, $(this).attr('data-session'), $(this).attr('data-token'), function(session) {
                 session.on("streamCreated", function (event) {
-                    session.subscribe(event.stream, replacementElementId);
+                    var options = {subscribeToAudio:true, subscribeToVideo:false};
+                    session.subscribe(event.stream, replacementElementId, options);
                 }); //on streamCreated
             }); //call2text_opentok_connect
         } //if checkSystemRequirements
