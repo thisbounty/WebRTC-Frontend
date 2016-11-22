@@ -1,9 +1,9 @@
 node_modules
-*.min.js
-*.min.css
-assets/*.min.*
-*.min.*
-*min.js*
-*.css
-assets/*/*/*.min.*
 assets/global/scripts/config.js
+assets/apps/*/*.min.*
+assets/layouts/*/*.min.*
+assets/layouts/*/*/*.min.*
+assets/layouts/*/*/*/*.min.*
+assets/pages/*/*.min.*
+assets/global/css/*.min.*
+assets/global/scripts/*.min.*
