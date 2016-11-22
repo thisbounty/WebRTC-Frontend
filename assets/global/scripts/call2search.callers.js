@@ -1,6 +1,5 @@
 jQuery(document).ready(function() {
     $("div.content").on("click", "button.mobile-call", function(e) {
-        e.preventDefault();
         $.ajax({
             type: "GET",
             url: config.calls_new_url,
@@ -16,6 +15,7 @@ jQuery(document).ready(function() {
                 });
             }
         });
+		return false;
     });
 });
 
