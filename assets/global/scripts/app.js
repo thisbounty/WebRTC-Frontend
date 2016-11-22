@@ -32,7 +32,6 @@ var App = function() {
 
     // check if the token exists if not redirect user to the login page
     var checkLocalStorage = function() {
-
         if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html") {
             window.location.href = "/login.html";
         }
@@ -1028,7 +1027,16 @@ var App = function() {
 }();
 
 <!-- END THEME LAYOUT SCRIPTS -->
-
-jQuery(document).ready(function() {
-   App.init(); // init metronic core componets
+$(document).ready(function() {
+    if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html"){
+        $('body').hide();
+    };
+    App.init(); // init metronic core componets
 });
+
+$(window).load(function() {
+    if ((localStorage.getItem("call2search") && localStorage.getItem("call2search") !== "null") || window.location.pathname === "/login.html") {
+        $('body').show();
+    }
+});
+
