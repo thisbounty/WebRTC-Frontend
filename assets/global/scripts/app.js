@@ -30,6 +30,14 @@ var App = function() {
         'yellow': '#F8CB00'
     };
 
+    // check if the token exists if not redirect user to the login page
+    var checkLocalStorage = function() {
+
+        if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html") {
+            window.location.href = "/login.html";
+        }
+    };
+
     // initializes main settings
     var handleInit = function() {
 
@@ -577,6 +585,8 @@ var App = function() {
         //main function to initiate the theme
         init: function() {
             //IMPORTANT!!!: Do not modify the core handlers call order.
+
+            checkLocalStorage();
 
             //Core handlers
             handleInit(); // initialize core variables
