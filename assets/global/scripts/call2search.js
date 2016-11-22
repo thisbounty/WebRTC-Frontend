@@ -4,7 +4,13 @@ jQuery(document).ready(function(){
             call2text_opentok_connect(config.tokbox_api, $(this).attr('data-session'), $(this).attr('data-token'), function(session) {
                 session.on("streamCreated", function (event) {
                     var options = {subscribeToAudio:true, subscribeToVideo:false};
-                    session.subscribe(event.stream, replacementElementId, options);
+                    session.subscribe(event.stream, replacementElementId, options, function(error) {
+                        if(error) {
+                            console.log(error);
+                        } else {
+                            console.log('call/new callback');
+                        }
+                    });
                 }); //on streamCreated
             }); //call2text_opentok_connect
         } //if checkSystemRequirements
@@ -33,8 +39,7 @@ function call2text_opentok_publish($api, $session_id, $token, cb) {
         console.log("Publisher started streaming.");
       },
       streamDestroyed: function (event) {
-        console.log("Publisher stopped streaming. Reason: "
-          + event.reason);
+        console.log("Publisher stopped streaming. Reason: " + event.reason);
       }
     });
 
