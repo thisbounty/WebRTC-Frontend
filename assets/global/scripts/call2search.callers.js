@@ -1,3 +1,24 @@
+jQuery(document).ready(function() {
+    $("div.content").on("click", "button.mobile-call", function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: config.calls_new_url,
+            dataType: "json",
+            contentType: "application/json",
+            data: {
+                "access_token": localStorage.getItem('call2search')
+            },
+            success: function(res) {
+                call2text_opentok_publish(config.tokbox_api, res.call.session, res.call.token, function(cb)
+				{
+                    //callback
+                });
+            }
+        });
+    });
+});
+
 function call2text_opentok_publish($api, $session_id, $token, cb) {
     var session;
     var publisher;
