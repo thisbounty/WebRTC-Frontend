@@ -1011,7 +1011,7 @@ var App = function() {
         },
 
         api_url: function ($url) {
-             return $url+"?access_token="+localStorage.getItem('call2text');
+             return $url+"?access_token="+localStorage.getItem('call2search');
         }
     };
 
