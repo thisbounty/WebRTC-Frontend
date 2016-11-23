@@ -148,15 +148,14 @@ var src = new EventSource(urlToChangeStream);
 src.addEventListener('data', function(msg) {
     var table_api = $('#call_table').DataTable();
     var data = JSON.parse(msg.data);
-    console.log(data);
     if (data.type) {
         switch (data.type) {
             case "update":
-                //do something with update
+                $('div.portlet-body button[call-id="' + data.data.id + '"]').replaceWith(data.data.status);
                 break;
 
             case "create":
-				//insert new call into table
+                //insert new call into table
                 break;
 
             default:

@@ -1,7 +1,6 @@
 jQuery(document).ready(function() {
     $("div.portlet-body").on("click", "button.connect", function(){
         if (OT.checkSystemRequirements() == 1) {
-			var but = this;
             $.ajax({
                 type: "GET",
                 url: config.calls_connect_url,
@@ -12,7 +11,6 @@ jQuery(document).ready(function() {
 					"id": $(this).attr('call-id')
                 },
                 success: function(res) {
-					$(but).replaceWith("Connected");
                     console.log("calls/connect successful");
                 }
             });
