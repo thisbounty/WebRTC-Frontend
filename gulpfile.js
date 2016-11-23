@@ -59,6 +59,12 @@ gulp.task('sass:watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
+gulp.task('live:minify', function () {
+	gulp.watch('./assets/global/scripts/!(*.min.js).js', function(event) {
+		gulp.src(event.path).pipe(uglify()).pipe(rename({suffix: '.min'})).pipe(gulp.dest('./assets/global/scripts/'));
+	});
+});
+
 //*** CSS & JS minify task
 gulp.task('minify', function () {
     // css minify 
