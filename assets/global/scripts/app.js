@@ -32,7 +32,6 @@ var App = function() {
 
     // check if the token exists if not redirect user to the login page
     var checkLocalStorage = function() {
-
         if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html") {
             window.location.href = "/login.html";
         }
