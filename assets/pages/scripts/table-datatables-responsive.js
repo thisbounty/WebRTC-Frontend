@@ -146,6 +146,21 @@ $(window).load(function() {
 var urlToChangeStream = config.sse_url;
 var src = new EventSource(urlToChangeStream);
 src.addEventListener('data', function(msg) {
-  var data = JSON.parse(msg.data);
-  console.log(data); // the change object
+    var table_api = $('#call_table').DataTable();
+    var data = JSON.parse(msg.data);
+    console.log(data);
+    if (data.type) {
+        switch (data.type) {
+            case "update":
+                //do something with update
+                break;
+
+            case "create":
+				//insert new call into table
+                break;
+
+            default:
+                console.log(data);
+        }
+    }
 });
