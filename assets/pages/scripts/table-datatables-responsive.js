@@ -53,7 +53,7 @@ var TableDatatablesResponsive = function () {
                     for ( var i=0, ien=json.calls.length ; i<ien ; i++ ) {
                         call=json.calls[i];
                         if(call.status == 'Incoming') {
-                            table.push([call.created, call.caller, '<button class="connect" name="connect" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
+                            table.push([call.created, call.caller, '<button class="connect" name="connect" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
                         } else {
                             table.push([call.created, call.caller, call.status]);
                         }
