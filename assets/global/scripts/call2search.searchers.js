@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
                         subscribeToAudio: true,
                         subscribeToVideo: false
                     };
-                    session.subscribe(event.stream, replacementElementId, options, function(error) {
+                    session.subscribe(event.stream, 'desktop_call_window', options, function(error) {
                         if(error) {
                             console.log(error);
                         } else {
