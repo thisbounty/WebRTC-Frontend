@@ -53,7 +53,7 @@ var TableDatatablesResponsive = function () {
                     for ( var i=0, ien=json.calls.length ; i<ien ; i++ ) {
                         call=json.calls[i];
                         if(call.status == 'Incoming') {
-                            table.push([call.created, call.caller, '<button class="connect" name="connect" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
+                            table.push([call.created, call.caller, '<button class="connect" name="connect" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
                         } else {
                             table.push([call.created, call.caller, call.status]);
                         }
@@ -146,6 +146,20 @@ $(window).load(function() {
 var urlToChangeStream = config.sse_url;
 var src = new EventSource(urlToChangeStream);
 src.addEventListener('data', function(msg) {
-  var data = JSON.parse(msg.data);
-  console.log(data); // the change object
+    var table_api = $('#call_table').DataTable();
+    var data = JSON.parse(msg.data);
+    if (data.type) {
+        switch (data.type) {
+            case "update":
+                $('div.portlet-body button[call-id="' + data.data.id + '"]').replaceWith(data.data.status);
+                break;
+
+            case "create":
+                //insert new call into table
+                break;
+
+            default:
+                console.log(data);
+        }
+    }
 });

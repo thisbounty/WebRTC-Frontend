@@ -1,9 +1,25 @@
-jQuery(document).ready(function(){
-    $("div.portlet-body").on("click","button.connect", function() {
+jQuery(document).ready(function() {
+    $("div.portlet-body").on("click", "button.connect", function(){
         if (OT.checkSystemRequirements() == 1) {
+            $.ajax({
+                type: "GET",
+                url: config.calls_connect_url,
+                dataType: "json",
+                contentType: "application/json",
+                data: {
+                    "access_token": localStorage.getItem('call2search'),
+					"id": $(this).attr('call-id')
+                },
+                success: function(res) {
+                    console.log("calls/connect successful");
+                }
+            });
             call2text_opentok_connect(config.tokbox_api, $(this).attr('data-session'), $(this).attr('data-token'), function(session) {
                 session.on("streamCreated", function (event) {
-                    var options = {subscribeToAudio:true, subscribeToVideo:false};
+                    var options = {
+                        subscribeToAudio: true,
+                        subscribeToVideo: false
+                    };
                     session.subscribe(event.stream, replacementElementId, options, function(error) {
                         if(error) {
                             console.log(error);
@@ -16,7 +32,6 @@ jQuery(document).ready(function(){
         } //if checkSystemRequirements
     }); //button.connect click
 }); //doc ready
-
 function call2text_opentok_connect($api, $session_id, $token, cb) {
     var session = OT.initSession($api, $session_id);
     session.connect($token, function(error) {
