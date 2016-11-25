@@ -15,6 +15,9 @@ jQuery(document).ready(function() {
                 }
             });
             call2text_opentok_connect(config.tokbox_api, $(this).attr('data-session'), $(this).attr('data-token'), function(session) {
+                //publish session
+                call2text_opentok_publish(session, 'desktop_call_window');
+                //connect to every new stream
                 session.on("streamCreated", function (event) {
                     var options = {
                         subscribeToAudio: true,
@@ -43,12 +46,12 @@ function call2text_opentok_connect($api, $session_id, $token, cb) {
     });
 }
 
-function call2text_opentok_publish($api, $session_id, $token, cb) {
-    var session;
+function call2text_opentok_publish(session, replacementElementId) {
     var publisher;
-
+	
+	var pubOptions = { publishAudio:true, publishVideo:false };
     // Replace with the replacement element ID:
-    publisher = OT.initPublisher(replacementElementId);
+    publisher = OT.initPublisher(replacementElementId, pubOptions);
     publisher.on({
       streamCreated: function (event) {
         console.log("Publisher started streaming.");
@@ -57,15 +60,10 @@ function call2text_opentok_publish($api, $session_id, $token, cb) {
         console.log("Publisher stopped streaming. Reason: " + event.reason);
       }
     });
-
-    // Replace apiKey and sessionID with your own values:
-    session = OT.initSession($api, $session_id);
-    // Replace token with your own value:
-    session.connect($token, function (error) {
-      if (session.capabilities.publish == 1) {
-        session.publish(publisher);
-      } else {
-        console.log("You cannot publish an audio-video stream.");
-      }
-    });
+	
+	if (session.capabilities.publish == 1) {
+      session.publish(publisher);
+    } else {
+      console.log("You cannot publish an audio-video stream.");
+    }
 }
