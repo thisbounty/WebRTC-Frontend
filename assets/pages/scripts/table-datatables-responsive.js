@@ -155,7 +155,7 @@ src.addEventListener('data', function(msg) {
                 break;
 
             case "create":
-                //insert new call into table
+                table_api.row.add([data.data.created, data.data.caller.firstName, '<button class="connect" name="connect" call-id="'+data.data.id+'" data-session="'+data.data.session+'" data-token="'+data.data.token+'">'+data.data.status+"</button>"]).draw(false);
                 break;
 
             default:
