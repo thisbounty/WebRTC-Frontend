@@ -5,7 +5,6 @@ jQuery(document).ready(function() {
                 type: "GET",
                 url: config.calls_connect_url,
                 dataType: "json",
-                contentType: "application/json",
                 data: {
                     "access_token": localStorage.getItem('call2search'),
 					"id": $(this).attr('call-id')
@@ -21,7 +20,8 @@ jQuery(document).ready(function() {
                 session.on("streamCreated", function (event) {
                     var options = {
                         subscribeToAudio: true,
-                        subscribeToVideo: false
+                        subscribeToVideo: false,
+                        insertMode: "append"
                     };
                     session.subscribe(event.stream, 'desktop_call_window', options, function(error) {
                         if(error) {
@@ -49,7 +49,7 @@ function call2text_opentok_connect($api, $session_id, $token, cb) {
 function call2text_opentok_publish(session, replacementElementId) {
     var publisher;
 	
-	var pubOptions = { publishAudio:true, publishVideo:false };
+	var pubOptions = { publishAudio:true, publishVideo:false, insertMode: "append" };
     // Replace with the replacement element ID:
     publisher = OT.initPublisher(replacementElementId, pubOptions);
     publisher.on({

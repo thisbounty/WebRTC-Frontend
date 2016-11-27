@@ -1,32 +1,67 @@
 jQuery(document).ready(function() {
-    $("div.content").on("click", "button.mobile-call", function(e) {
+    $("div.content").on("click", "button.green.mobile-call", function(e) {
+        this.disabled = true;
+        $(this).text("CONNECTING");
+        var call_button = this;
         $.ajax({
             type: "GET",
             url: config.calls_new_url,
             dataType: "json",
-            contentType: "application/json",
             data: {
                 "access_token": localStorage.getItem('call2search')
             },
             success: function(res) {
                 call2text_opentok_connect(config.tokbox_api, res.call.session, res.call.token, function(session)
                 {
-                    ////publish session
-                    call2text_opentok_publish(session, 'mobile_call_window');
-                    //connect to every new stream
-                    session.on("streamCreated", function (event) {
-                    var options = {
-                        subscribeToAudio: true,
-                        subscribeToVideo: false
-                    };
-                    session.subscribe(event.stream, 'mobile_call_window', options, function(error) {
-                        if(error) {
-                            console.log(error);
-                        } else {
-                            console.log('call/new callback');
-                        }
+                    console.log(session);
+                    //change button to hangup
+                    $(call_button).removeClass("green");
+                    $(call_button).addClass("red");
+                    $(call_button).text("HANGUP");
+                    call_button.disabled = false;
+                    
+                    $("div.content").one("click", "button.red.mobile-call", function(e) {
+                        session.disconnect();
+                        return false;
                     });
-                }); //on streamCreated
+					
+                    //connect to every new stream
+                    session.on("sessionDisconnected", function(event) {
+                        $.ajax({
+                            type: "GET",
+                            url: config.calls_disconnect_url,
+                            dataType: "json",
+                            data: {
+								"access_token": localStorage.getItem('call2search'),
+                                "id": res.call.id
+                            },
+                            success: function(res) {
+                                console.log("api has been informed about the session disconnection");
+                            }
+                        });
+                        $(call_button).removeClass("red");
+                        $(call_button).addClass("green");
+                        $(call_button).text("CALL");
+                        return false;
+                    }); //onSessionDisconnected
+					
+                    session.on("streamCreated", function (event) {
+                        var options = {
+                            subscribeToAudio: true,
+                            subscribeToVideo: false,
+                            insertMode: "append"
+                        };
+                        session.subscribe(event.stream, 'mobile_call_window', options, function(error) {
+                            if(error) {
+                                console.log(error);
+                            } else {
+                                console.log('call/new callback');
+                            }
+                        });
+                    }); //on streamCreated
+					
+                    //publish session
+                    call2text_opentok_publish(session, 'mobile_call_window');
                 });
             }
         });
@@ -48,7 +83,7 @@ function call2text_opentok_connect($api, $session_id, $token, cb) {
 function call2text_opentok_publish(session, replacementElementId) {
     var publisher;
 
-	var pubOptions = { publishAudio:true, publishVideo:false };
+	var pubOptions = { publishAudio:true, publishVideo:false, insertMode: "append" };
     // Replace with the replacement element ID:
     publisher = OT.initPublisher(replacementElementId, pubOptions);
     publisher.on({
