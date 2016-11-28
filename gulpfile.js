@@ -63,6 +63,9 @@ gulp.task('live:minify', function () {
 	gulp.watch('./assets/global/scripts/!(*.min.js).js', function(event) {
 		gulp.src(event.path).pipe(uglify()).pipe(rename({suffix: '.min'})).pipe(gulp.dest('./assets/global/scripts/'));
 	});
+	gulp.watch('./assets/pages/scripts/!(*.min.js).js', function(event) {
+		gulp.src(event.path).pipe(uglify()).pipe(rename({suffix: '.min'})).pipe(gulp.dest('./assets/pages/scripts/'));
+	});
 });
 
 //*** CSS & JS minify task
