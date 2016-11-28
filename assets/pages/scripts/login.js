@@ -49,6 +49,7 @@ var Login = function() {
                 $.post(config.login_url, $('form.login-form').serialize(), function(data) {
                     if(data.id) {
                         localStorage.setItem('call2search',data.id);
+                        localStorage.setItem('userId',data.userId);
                         window.location = config.dashboard_url;
                     }
                 });
