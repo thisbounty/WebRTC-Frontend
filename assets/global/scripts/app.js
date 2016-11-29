@@ -36,10 +36,10 @@ var App = function() {
 
     // check if the token exists if not redirect user to the login page
     var checkLocalStorage = function() {
-        if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html") {
+        if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html" && window.location.pathname !== "/signup.html") {
             window.location.href = "/login.html";
         }
-        else if(window.location.pathname !== "/login.html"){
+        else if(window.location.pathname !== "/login.html" && window.location.pathname !== "/signup.html"){
             $.ajax({
                 type: "get", url: App.api_url(config.calls_get_all_url),
                 success: function (data, text) {
@@ -1045,14 +1045,14 @@ var App = function() {
 
 <!-- END THEME LAYOUT SCRIPTS -->
 $(document).ready(function() {
-    if (window.location.pathname !== "/login.html" && window.hide){
+    if ((window.location.pathname !== "/login.html" || window.location.pathname !== "/signup.html")&& window.hide){
         $('body').hide();
     };
     App.init(); // init metronic core componets
 });
 
 $(window).load(function() {
-    if ((localStorage.getItem("call2search") && localStorage.getItem("call2search") !== "null" && !window.hide) || window.location.pathname === "/login.html") {
+    if ((localStorage.getItem("call2search") && localStorage.getItem("call2search") !== "null" && !window.hide) || window.location.pathname === "/login.html" || window.location.pathname === "/signup.html") {
         $('body').show();
     }
 });
