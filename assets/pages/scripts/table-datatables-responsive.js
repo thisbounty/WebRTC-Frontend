@@ -58,10 +58,26 @@ var TableDatatablesResponsive = function () {
                     table=[];
                     for ( var i=0, ien=json.calls.length ; i<ien ; i++ ) {
                         call=json.calls[i];
-                        if(call.status == 'Incoming') {
-                            table.push([call.created, call.caller, '<button class="connect" name="connect" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
-                        } else {
-                            table.push([call.created, call.caller, call.status]);
+                        switch (call.status) {
+                            case "Connected":
+                                if(call.searcher) {
+                                    //if current logged user is related to call
+                                    if(call.searcher.id == localStorage.getItem('userId')) {
+                                        table.push([call.created, call.caller, '<button class="disconnect btn red btn-block" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">Connected</button>']);
+                                    }
+                                    else {
+                                        table.push([call.created, call.caller, call.status]);
+                                    }
+                                }
+                                break;
+
+                            case "Incoming":
+                                table.push([call.created, call.caller, '<button class="connect btn green btn-block" name="connect" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">'+call.status+"</button>"]);
+                                break;
+
+                            default:
+                                table.push([call.created, call.caller, call.status]);
+
                         }
                     }
                     return table;
@@ -102,11 +118,28 @@ src.addEventListener('data', function(msg) {
     if (data.type) {
         switch (data.type) {
             case "update":
-                $('div.portlet-body button[call-id="' + data.data.id + '"]').replaceWith(data.data.status);
+                if(data.data.searcher)
+                {
+                    //if current logged user is related to call
+                    if(data.data.searcher.id == localStorage.getItem('userId')) {
+                        var button = $('div.portlet-body button[call-id="' + data.data.id + '"]');
+                        button.text("Connected");
+                        button.removeClass("green");
+                        button.addClass("red");
+                        button.removeClass("connect");
+                        button.addClass("diconnect");
+                    }
+                    else {
+                        $('div.portlet-body button[call-id="' + data.data.id + '"]').replaceWith(data.data.status);
+                    }
+                }
+                else {
+                    $('div.portlet-body button[call-id="' + data.data.id + '"]').replaceWith(data.data.status);
+                }
                 break;
 
             case "create":
-                table_api.row.add([data.data.created, data.data.caller.firstName, '<button class="connect" name="connect" call-id="'+data.data.id+'" data-session="'+data.data.session+'" data-token="'+data.data.token+'">'+data.data.status+"</button>"]).draw(false);
+                table_api.row.add([data.data.created, data.data.caller.firstName, '<button class="connect btn green btn-block" name="connect" call-id="'+data.data.id+'" data-session="'+data.data.session+'" data-token="'+data.data.token+'">'+data.data.status+"</button>"]).draw(false);
                 break;
 
             default:

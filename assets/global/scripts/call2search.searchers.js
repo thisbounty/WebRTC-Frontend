@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
     $("div.portlet-body").on("click", "button.connect", function(){
+        var button = this;
         if (OT.checkSystemRequirements() == 1) {
             $.ajax({
                 type: "GET",
@@ -14,8 +15,31 @@ jQuery(document).ready(function() {
                 }
             });
             call2text_opentok_connect(config.tokbox_api, $(this).attr('data-session'), $(this).attr('data-token'), function(session) {
-                //publish session
-                call2text_opentok_publish(session, 'desktop_call_window');
+
+                //disconnect after clicking "Connected" button
+                $(button).one("click", function(e) {
+                    session.disconnect();
+                    return false;
+                });
+
+                //send disconnect request to our api and make button callable once again
+                session.on("sessionDisconnected", function(event) {
+                    $.ajax({
+                        type: "GET",
+                        url: config.calls_disconnect_url,
+                        dataType: "json",
+                        data: {
+                            "access_token": localStorage.getItem('call2search'),
+                            "id": $(this).attr('call-id')
+                        },
+                        success: function(res) {
+                            console.log("api has been informed about the session disconnection");
+                        }
+                    });
+                    $(button).replaceWith("Disconnected");
+                    return false;
+                });//onSessionDisconnected
+
                 //connect to every new stream
                 session.on("streamCreated", function (event) {
                     var options = {
@@ -31,8 +55,26 @@ jQuery(document).ready(function() {
                         }
                     });
                 }); //on streamCreated
+
+                //publish session
+                call2text_opentok_publish(session, 'desktop_call_window');
             }); //call2text_opentok_connect
         } //if checkSystemRequirements
+    }); //button.connect click
+	$("div.portlet-body").on("click", "button.disconnect", function(){
+        $.ajax({
+            type: "GET",
+            url: config.calls_disconnect_url,
+            dataType: "json",
+            data: {
+                "access_token": localStorage.getItem('call2search'),
+                "id": $(this).attr('call-id')
+            },
+            success: function(res) {
+                console.log("api has been informed about the session disconnection");
+            }
+        });
+        $(this).replaceWith("Disconnected");
     }); //button.connect click
 }); //doc ready
 function call2text_opentok_connect($api, $session_id, $token, cb) {

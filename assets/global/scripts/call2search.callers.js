@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
                         return false;
                     });
 					
-                    //connect to every new stream
+                    //send disconnect request to our api and make button callable once again
                     session.on("sessionDisconnected", function(event) {
                         $.ajax({
                             type: "GET",
@@ -43,8 +43,9 @@ jQuery(document).ready(function() {
                         $(call_button).addClass("green");
                         $(call_button).text("CALL");
                         return false;
-                    }); //onSessionDisconnected
-					
+                    });//onSessionDisconnected
+
+                    //connect to every new stream
                     session.on("streamCreated", function (event) {
                         var options = {
                             subscribeToAudio: true,
