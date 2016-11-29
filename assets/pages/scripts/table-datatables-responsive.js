@@ -82,7 +82,7 @@ var TableDatatablesResponsive = function () {
             if (!jQuery().dataTable) {
                 return;
             }
-
+            $.fn.dataTable.ext.errMode = 'throw';
             initTable1();
         }
 

@@ -1,6 +1,9 @@
 /**
 Core script to handle the entire theme and core functions
 **/
+
+window.hide = true;
+
 var App = function() {
 
     // IE mode
@@ -30,11 +33,25 @@ var App = function() {
         'yellow': '#F8CB00'
     };
 
+
     // check if the token exists if not redirect user to the login page
     var checkLocalStorage = function() {
         if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html") {
             window.location.href = "/login.html";
         }
+        else if(window.location.pathname !== "/login.html"){
+            $.ajax({
+                type: "get", url: App.api_url(config.calls_get_all_url),
+                success: function (data, text) {
+                    window.hide = false;
+                    $('body').show();
+                },
+                error: function (request, status, error) {
+                    window.location.href = "/login.html";
+                }
+            });
+        }
+
     };
 
     // initializes main settings
@@ -1028,14 +1045,14 @@ var App = function() {
 
 <!-- END THEME LAYOUT SCRIPTS -->
 $(document).ready(function() {
-    if ((!localStorage.getItem("call2search") || localStorage.getItem("call2search") === "null") && window.location.pathname !== "/login.html"){
+    if (window.location.pathname !== "/login.html" && window.hide){
         $('body').hide();
     };
     App.init(); // init metronic core componets
 });
 
 $(window).load(function() {
-    if ((localStorage.getItem("call2search") && localStorage.getItem("call2search") !== "null") || window.location.pathname === "/login.html") {
+    if ((localStorage.getItem("call2search") && localStorage.getItem("call2search") !== "null" && !window.hide) || window.location.pathname === "/login.html") {
         $('body').show();
     }
 });
