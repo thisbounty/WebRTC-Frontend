@@ -63,7 +63,7 @@ var TableDatatablesResponsive = function () {
                                 if(call.searcher) {
                                     //if current logged user is related to call
                                     if(call.searcher.id == localStorage.getItem('userId')) {
-                                        table.push([call.created, call.caller, '<button class="disconnect btn red btn-block" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">Connected</button>']);
+                                        table.push([call.created, call.caller, '<button class="connect btn green btn-block" call-id="'+call.id+'" data-session="'+call.session+'" data-token="'+call.token+'">Resume</button>']);
                                     }
                                     else {
                                         table.push([call.created, call.caller, call.status]);
@@ -124,6 +124,7 @@ src.addEventListener('data', function(msg) {
                     if(data.data.searcher.id == localStorage.getItem('userId')) {
                         var button = $('div.portlet-body button[call-id="' + data.data.id + '"]');
                         button.text("Connected");
+                        button.css('color', 'black');
                         button.removeClass("green");
                         button.addClass("red");
                         button.removeClass("connect");

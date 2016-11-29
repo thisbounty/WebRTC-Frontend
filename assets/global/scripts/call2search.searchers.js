@@ -30,7 +30,7 @@ jQuery(document).ready(function() {
                         dataType: "json",
                         data: {
                             "access_token": localStorage.getItem('call2search'),
-                            "id": $(this).attr('call-id')
+                            "id": $(button).attr('call-id')
                         },
                         success: function(res) {
                             console.log("api has been informed about the session disconnection");
